@@ -597,6 +597,8 @@ spec:
         - name: data
           persistentVolumeClaim:
             claimName: pvc-iscsi-seafile-data
+      imagePullSecrets:
+        - name: harbor-registry-creds
 
 ---
 kind: Deployment
