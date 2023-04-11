@@ -538,7 +538,7 @@ spec:
       enableServiceLinks: true
       containers:
         - name: seafile-server
-          image: "harbor.k8s.lan/dockerhub-proxy/seafileltd/seafile-mc:10.0.0"
+          image: "harbor.k8s.lan/k8s/seafile:0"
           envFrom:
             - configMapRef:
                 name: seafile-server-env
