@@ -1,0 +1,3 @@
+FROM docker.io/seafileltd/seafile-mc:10.0.1
+
+COPY src/bootstrap.py /scripts/bootstrap.py

@@ -1,0 +1,812 @@
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: pv-iscsi-seafile-db
+  labels:
+    app: seafile
+    component: db
+    instance: prd
+spec:
+  storageClassName: "freenas-iscsi-manual-csi"
+  capacity:
+    storage: 8Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  csi:
+    driver: org.democratic-csi.node-manual
+    readOnly: false
+    fsType: xfs
+    volumeHandle: pv-iscsi-seafile-db
+    volumeAttributes:
+      portal: storage-server-lagg.lan:3260
+      iqn: iqn.2005-10.org.freenas.ctl:seafile-db
+      lun: "0"
+      node_attach_driver: iscsi
+      provisioner_driver: node-manual
+
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: pv-iscsi-seafile-data
+  labels:
+    app: seafile
+    component: db
+    instance: prd
+spec:
+  storageClassName: "freenas-iscsi-manual-csi"
+  capacity:
+    storage: 200Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  csi:
+    driver: org.democratic-csi.node-manual
+    readOnly: false
+    fsType: xfs
+    volumeHandle: pv-iscsi-seafile-data
+    volumeAttributes:
+      portal: storage-server-lagg.lan:3260
+      iqn: iqn.2005-10.org.freenas.ctl:seafile-data
+      lun: "0"
+      node_attach_driver: iscsi
+      provisioner_driver: node-manual
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: pvc-iscsi-seafile-data
+  namespace: tools
+  labels:
+    app: seafile
+    component: server
+    instance: prd
+  annotations:
+    volume.beta.kubernetes.io/storage-class: "freenas-iscsi-manual-csi"
+spec:
+  storageClassName: freenas-iscsi-manual-csi
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 200Gi
+  volumeName: pv-iscsi-seafile-data
+
+---
+kind: SealedSecret
+apiVersion: bitnami.com/v1alpha1
+metadata:
+  name: seafile-db
+  namespace: tools
+spec:
+  encryptedData:
+    mariadb-password: AgDsLag4DDc1QUp8tK2GvVBkqvLRrVrCdmhbzX0AIc7Lnu5xPDCfBhCMThAM2qZOSKrzTOY1X089CFAC1J8d2M9uisDRC5KvK7s+Zp1JboZ8Hxysb9GKTYy5YPnBOjefdJy6o+I5+ax/apHoDGIFu2py8QAEYDL5+LkEkfCJjJsUCkBHMQ71x//03Eawn37OBCcOjIFNJ47DbZLhVABPmfzmhp6O9bxhizut/Cu2iyEk7tIivg6D+QXOx0lFbHs5C7Ul3ACe57AsXbEhpIZAxwZQwcqXKPZkcYEdXx+cdpKEI/UwU9Poo5opoY/L14I6cId6lo0BsKeK75uXE5t9BoxvSYNOgTpmsCDGFRHV6rtEj2K6lRtGQanaumubwL+yPI7YS5XjzspiE2RXFwb+f7/aq/Mtm5sGQXZwh//dnwiUHvtjQDjW3vpQCD6nPw+6Fqm/1UW8Z3C26hdQmyCqZOC38YG60hI+3jACC1wV2tNBVBht5XvIn31BMCRNoG3WcST0y8Cu4YNvopMH6C45+yIfmjHWubNQfYqOim8+T9XPnPlgLMLn/6CKmQdjZ/aCDvpMup5B9GtEgb5HkqLzNY7t8/VMsVEU9NglzQqt7nBEHaYqOYLZJilNwgMsu35GLVR3kaZUzT573Tq0Ov7cdSxSBqwtXvSCfqTNs8buJkOQtmq9sFJH+eHxc3kolh5UKgCK5pCsSCGHCzI=
+    mariadb-root-password: AgARiWnwxvh9t9jFaYTmgayCa4TvDhOzJ9AxTbh5nJw6k3yatDPFPm9SN5gGtdiEbIQrDxDgqTEe8Bh8UUk3BFJAM5szcuZXcdLnASWkM3dGVPiZ+OAJKOrWFyPmxZU5GoTDApVT+Y0dsTMjF7l4hfzVjUW7rifgEEGYPxvjYfEfA9FKjkM2ODvJV2Y9oRJTCcacOSHeCSqj9wJsdpRodYJKt4u4wnxWcANujZ/11rQwzgBcqm6rz4+b97tqqLFoWDGq24DKy0ibp1mt3UPx2zXhbjxns0uqQBV6ouPuD7IhjddfrbGQ13iBN5Dcwl/WuWZRSO/UrrrxADTXkIf6LITX9r4RpwI7rFGFsq8lDb3qJRjPxmTW4fN2t++XWcilJJaPg9SCC5PxV+ImfZEPjdqAkfeBv1ss0pEENKDrLRy4UNB59C3isojmXgK48gMzTOe+6PKC4ovyh6VOPCFIwQwd94g+SUzyipslc3AM29lo7IWQUXgmhGf27FVEfwBM68flLj0l5q/9H065fQWuHQbFyHdO5r7Uao2fvAU8FMMXgiKPpOdQxw2OFutaUS2R7Tkf9yJihFv+5fQAy1jwp8sIupIu5i3xfpArvyAoPA8ewNhIk4+YVC8spBXZgfH1sdR7uzckJwRJFEsDM1j3oxdsNyAvdQVIv5TpFkrRIoO8GVzRBSBWPyCBnNG8ejSg0VUv6D3jFrSRdWY=
+  template:
+    metadata:
+      labels:
+        app: seafile
+        component: db
+        instance: prd
+      name: seafile-db
+      namespace: tools
+    type: Opaque
+
+---
+kind: SealedSecret
+apiVersion: bitnami.com/v1alpha1
+metadata:
+  name: seafile-server-secret-env
+  namespace: tools
+spec:
+  encryptedData:
+    JWT_SECRET: AgDYbwCwb1QfqIyzqFzjotoWSebBaLaAU/W77XAuBcqcLZNXwaqDvQMSCZZb11xQm0Tjhp+SppLjpsKIuLLIb0EYfHjtlBIIqyDcLGiTseAgmttyvjYWxZeKbBdHk3oJNWh2IyBlNgQI82bXVE+5/2yIo2mBPWV3X32qiWcw6KUuGCl1SX1LausQ3jVm1AdTdzHJxYv4tya/ArOSGIC91Nm3wfWz/5swskxzBAsW1/70UfwjysgE7qIAOCzc5l1Q+RSr0g1jER1NV9aiR1uVKbKVxY2qlyb5g5Rsu8YKNzpPlhpFOYYHg0YvyEsJ2KPvcKaSC0elnAeKcGIoy28ozPi4RkfdwVDVonPp2fKmIuNsVBnuDEpjORlpDMMf9yc6vsgs45/1tX5KZ5t8USBah1BXnkyFU0oANh3gyizNJs1omO/P4j66/FqaZ64q4wN0XC7nGTOBdyi5e/9ofFiP+kG0+TQMZjbhZnigfONDFVE0Us3+DzU/GH9x3cqHBuE39H3Z53Vmz2odci+jpPFR5IJWqxWo6XPkEj4s71Ii7arxRIKIoL9YT82QONkOzCOjP/X14hZJG/J/w8/i7sxm5Va6sQdDaFRAwM8yf1tA2cJ2QGDe/oJFqzXY492O7PJTelKYdaE5JB8mBu9sUxki+mME4q/J0gdEsry4shOLSZcRZwIGgyCz+jv+nPylFyxAr3rq6TVmUB/TMovJY6z2/i0BJkj2F5q1YznjEy0kSmI/Ti5KqUw=
+    SEAFILE_ADMIN_EMAIL: AgDtjZEHAZ4TjL85vcBQ8ejug7hLec2SIafDiuvCPbJYtOJ2yRGG9Y3SFAkdha4NROnrNnXHOEAr9pEsOmt/60XdpdWMqfWpAeHf9PM+8PsONei+jkQck9YfPxGUocMIX/S+5qCR5w/nWW15xMFwDN+ntKeg7iJs9lPtu/lYR9jo0p6IvjfwiOKzI63Rd5q6Rle7VzK2wlXTcfVDiXhc/v672q63M3w/j3hxhEyH3X8UmWNM6AJgx5XRm/TcTg6y9xK2+v0lPS1ashV73u3bcCsj6iySwuxijckF1UGCfDLESX7cUGMuUm8SJSImFR1qMQH5BBcpTN5eIhlxvtDnAhvs0BcrSvpFQTcaQh2aOUYw1S/Gz8pEtRlnyMyoNqFgYphH5nVGnlRCyr7J8oDLLAl5wLfY2uNncVAKrFR94xsvIc+Y2xwa7Sjok8fHBm2wxV2jqFc4DFz01SF5d3JNVUJrg/n14RwwXQJmmy7KkBobiaElPpSzluFVuhes3XuXbqKDslq0x52FJxSKbSOVQRSCfGSj1ZUXPko9gwPcmNe7Qjykt1WGlsAYamK7lCicgUhiv6cYItVBwEXOIA1brcnvLZ+ULlGx0PBJG+49GMiBPijh8huB7z973F81nfBdKjROfxe+592FadfQcrAQR+tc2x4A1/rz7e5PXAws2akdzBT8kknm9KoItyLWjWx+lZt9eIxv7OjJiv6OMKgSlWafkg==
+    SEAFILE_ADMIN_PASSWORD: AgA5yMEDi41+vZP9RP3l/j6EKoGY6uMRpnqBVFqmqf5Hin8Z9Qk9jLhbUGP/MRXmX91I4VsOXnkzsVDIGG0KrY/yLyQq01cH+5qtTIgAuUkfRY/0aynmXfwJ8WtX/XWmgWZEqtPVs66XrEjoOdsmlV5i/t5w7ksn6EVtsL8N3qOyyJKExt2oFz1fSTsb2uwy2GS+0hKcw0+a8mfIn+YgZ9xFBaWDFG1AV0VPzT7KB013q5w4DrzU2OwklJvcbJJm7L6Wcq5wmHfItWg6wEmY78zw2Fda+RgDJcQYGL6NZC0o6JtW3FzLrg4cnjd/EN16b2aUopMizejtxWSWFZpe8VCFDQhmKGkVJpuCq8zpaMT3xYGFKQ8Mw5KA+JB53m9eSIE+Hs+2KM+nLcC+KiFkS2634+pSENe6u2wzUJjKh5WWWJwyvXQVaiDBO6GHsHinceXZ6aQwBItKojw7khB7EHso4jZkmaEdk/xfacX3TsSuiE7DfW9HOA0wVYy4eTYyC9sBh0/7fnZa869Fzl/m7TwSouq4uZ/hMK7VteA/9kuaYhbOeK7xNGtLUDWzGT3a4A8bgogv4axvtSLDpqHF/VTsSHzzNbQr57XE/gImi+EZ7SX2YM4Rx0gSa0UE8crqEiwQeflgmhJZik2dIX2PzVqK5g/Q3UW2chMNAeyvsvqYmJ+5umzzXQzF7/LpFt6EjLzmnOlp9MGm0yYV8fHEv9bf3jjNm3bLt8iUhCxnTQ3845QM+zse
+  template:
+    metadata:
+      labels:
+        app: seafile
+        component: server
+        instance: prd
+      name: seafile-server-secret-env
+      namespace: tools
+    type: Opaque
+
+---
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: seafile-db
+  namespace: tools
+  labels:
+    app: seafile
+    component: db
+    instance: prd
+automountServiceAccountToken: false
+
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: seafile-db
+  namespace: tools
+  labels:
+    app: seafile
+    component: db
+    instance: prd
+data:
+  my.cnf: |-
+    [mysqld]
+    skip-name-resolve
+    explicit_defaults_for_timestamp
+    basedir=/opt/bitnami/mariadb
+    plugin_dir=/opt/bitnami/mariadb/plugin
+    port=3306
+    socket=/opt/bitnami/mariadb/tmp/mysql.sock
+    tmpdir=/opt/bitnami/mariadb/tmp
+    max_allowed_packet=16M
+    bind-address=*
+    pid-file=/opt/bitnami/mariadb/tmp/mysqld.pid
+    log-error=/opt/bitnami/mariadb/logs/mysqld.log
+    character-set-server=UTF8
+    collation-server=utf8_general_ci
+    slow_query_log=0
+    slow_query_log_file=/opt/bitnami/mariadb/logs/mysqld.log
+    long_query_time=10.0
+
+    [client]
+    port=3306
+    socket=/opt/bitnami/mariadb/tmp/mysql.sock
+    default-character-set=UTF8
+    plugin_dir=/opt/bitnami/mariadb/plugin
+
+    [manager]
+    port=3306
+    socket=/opt/bitnami/mariadb/tmp/mysql.sock
+    pid-file=/opt/bitnami/mariadb/tmp/mysqld.pid
+
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: seafile-documentserver-local-production-linux
+  namespace: tools
+  labels:
+    app: seafile
+    component: server
+    instance: prd
+data:
+  local-production-linux.json: |-
+    {
+        "services": {
+            "CoAuthoring": {
+                "autoAssembly": {
+                    "enable": true,
+                    "interval": "5m"
+                }
+            }
+        }
+    }
+
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: seafile-server-env
+  namespace: tools
+  labels:
+    app: seafile
+    component: server
+    instance: prd
+data:
+  DB_HOST: "seafile-db"
+  SEAFILE_SERVER_HOSTNAME: "cloud.theautomation.nl"
+  SEAFILE_SERVER_LETSENCRYPT: "false"
+  TIME_ZONE: "Europe/Amsterdam"
+  NON_ROOT: "true"
+  FILE_SERVER_ROOT: "https://cloud.theautomation.nl/seafhttp"
+
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: seafile-nginx-conf
+  namespace: tools
+  labels:
+    app: seafile
+    component: server
+    instance: prd
+data:
+  seafile.nginx.conf: |-
+    # -*- mode: nginx -*-
+    map $http_x_forwarded_proto $the_scheme {
+        default $http_x_forwarded_proto;
+        "" $scheme;
+    }
+    map $http_x_forwarded_host $the_host {
+        default $http_x_forwarded_host;
+        "" $host;
+    }
+    map $http_upgrade $proxy_connection {
+        default upgrade;
+        "" close;
+    }
+
+    server {
+    listen 80;
+    server_name cloud.theautomation.nl;
+
+        client_max_body_size 10m;
+
+        location / {
+            proxy_pass http://127.0.0.1:8000/;
+            proxy_read_timeout 310s;
+            proxy_set_header Host $host;
+            proxy_set_header Forwarded "for=$remote_addr;proto=$scheme";
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Connection "";
+            proxy_http_version 1.1;
+
+
+            client_max_body_size 0;
+            access_log      /var/log/nginx/seahub.access.log seafileformat;
+            error_log       /var/log/nginx/seahub.error.log;
+        }
+
+        location /seafhttp {
+            rewrite ^/seafhttp(.*)$ $1 break;
+            proxy_pass http://127.0.0.1:8082;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            client_max_body_size 0;
+            proxy_connect_timeout  36000s;
+            proxy_read_timeout  36000s;
+            proxy_request_buffering off;
+            access_log      /var/log/nginx/seafhttp.access.log seafileformat;
+            error_log       /var/log/nginx/seafhttp.error.log;
+        }
+
+        location /notification/ping {
+            proxy_pass http://127.0.0.1:8083/ping;
+            access_log      /var/log/nginx/notification.access.log seafileformat;
+            error_log       /var/log/nginx/notification.error.log;
+        }
+
+        location /notification {
+            proxy_pass http://127.0.0.1:8083/;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            access_log      /var/log/nginx/notification.access.log seafileformat;
+            error_log       /var/log/nginx/notification.error.log;
+        }
+
+        location /seafdav {
+            proxy_pass         http://127.0.0.1:8080;
+            proxy_set_header   Host $host;
+            proxy_set_header   X-Real-IP $remote_addr;
+            proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header   X-Forwarded-Host $server_name;
+            proxy_set_header   X-Forwarded-Proto $scheme;
+            proxy_read_timeout  1200s;
+            client_max_body_size 0;
+
+            access_log      /var/log/nginx/seafdav.access.log seafileformat;
+            error_log       /var/log/nginx/seafdav.error.log;
+    }
+
+        # Proxy pass is kubernetes service name 
+        location /onlyofficeds/ {
+            proxy_pass http://seafile-document-server:80/;
+            proxy_http_version 1.1;
+            client_max_body_size 100M;
+            proxy_read_timeout 3600s;
+            proxy_connect_timeout 3600s;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection $proxy_connection;
+            proxy_set_header X-Forwarded-Host $the_host/onlyofficeds;
+            proxy_set_header X-Forwarded-Proto $the_scheme;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+    }
+
+---
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  name: seafile-db
+  namespace: tools
+  labels:
+    app: seafile
+    component: db
+    instance: prd
+spec:
+  replicas: 1
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Delete
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: seafile
+      component: db
+      instance: prd
+  serviceName: seafile-db
+  updateStrategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: seafile
+        component: db
+        instance: prd
+    spec:
+      serviceAccountName: seafile-db
+      securityContext:
+        fsGroup: 2000
+      containers:
+        - name: mariadb
+          image: "harbor.k8s.lan/dockerhub-proxy/bitnami/mariadb:10.6.8-debian-11-r9"
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+          env:
+            - name: BITNAMI_DEBUG
+              value: "false"
+            - name: MARIADB_USER
+              value: "seafile"
+            - name: MARIADB_DATABASE
+              value: "seafile"
+            - name: MARIADB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: seafile-db
+                  key: mariadb-root-password
+            - name: MARIADB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: seafile-db
+                  key: mariadb-password
+          ports:
+            - containerPort: 3306
+          livenessProbe:
+            failureThreshold: 3
+            initialDelaySeconds: 120
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+            exec:
+              command:
+                - /bin/bash
+                - -ec
+                - |
+                  password_aux="${MARIADB_ROOT_PASSWORD:-}"
+                  if [[ -f "${MARIADB_ROOT_PASSWORD_FILE:-}" ]]; then
+                      password_aux=$(cat "$MARIADB_ROOT_PASSWORD_FILE")
+                  fi
+                  mysqladmin status -uroot -p"${password_aux}"
+          readinessProbe:
+            failureThreshold: 3
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+            exec:
+              command:
+                - /bin/bash
+                - -ec
+                - |
+                  password_aux="${MARIADB_ROOT_PASSWORD:-}"
+                  if [[ -f "${MARIADB_ROOT_PASSWORD_FILE:-}" ]]; then
+                      password_aux=$(cat "$MARIADB_ROOT_PASSWORD_FILE")
+                  fi
+                  mysqladmin status -uroot -p"${password_aux}"
+          resources:
+            limits: {}
+            requests: {}
+          volumeMounts:
+            - name: data
+              mountPath: /bitnami/mariadb
+            - name: config
+              mountPath: /opt/bitnami/mariadb/conf/my.cnf
+              subPath: my.cnf
+      volumes:
+        - name: config
+          configMap:
+            name: seafile-db
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        selector:
+          matchLabels:
+            app: seafile
+            component: db
+            instance: prd
+        accessModes:
+          - "ReadWriteOnce"
+        storageClassName: freenas-iscsi-manual-csi
+        resources:
+          requests:
+            storage: "8Gi"
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: seafile-memcached
+  namespace: tools
+  labels:
+    app: seafile
+    component: memcached
+    instance: prd
+spec:
+  selector:
+    matchLabels:
+      app: seafile
+      component: memcached
+      instance: prd
+  replicas: 1
+  strategy:
+    rollingUpdate: {}
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: seafile
+        component: memcached
+        instance: prd
+    spec:
+      securityContext:
+        fsGroup: 2000
+      serviceAccountName: default
+      containers:
+        - name: memcached
+          image: "harbor.k8s.lan/dockerhub-proxy/bitnami/memcached:1.6.19-debian-11-r0"
+          imagePullPolicy: "IfNotPresent"
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+          env:
+            - name: BITNAMI_DEBUG
+              value: "false"
+            - name: MEMCACHED_PORT_NUMBER
+              value: "11211"
+          ports:
+            - containerPort: 11211
+          livenessProbe:
+            failureThreshold: 6
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+            tcpSocket:
+              port: 11211
+          readinessProbe:
+            failureThreshold: 6
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 3
+            tcpSocket:
+              port: 11211
+          resources:
+            limits: {}
+            requests:
+              cpu: 250m
+              memory: 256Mi
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: tmp
+          emptyDir: {}
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: seafile-server
+  namespace: tools
+  labels:
+    app: seafile
+    component: server
+    instance: prd
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: seafile
+      component: server
+      instance: prd
+  template:
+    metadata:
+      labels:
+        app: seafile
+        component: server
+        instance: prd
+    spec:
+      serviceAccountName: default
+      automountServiceAccountToken: true
+      dnsPolicy: ClusterFirst
+      enableServiceLinks: true
+      containers:
+        - name: seafile-server
+          image: "harbor.k8s.lan/dockerhub-proxy/seafileltd/seafile-mc:10.0.0"
+          envFrom:
+            - configMapRef:
+                name: seafile-server-env
+                optional: false
+          env:
+            - name: DB_ROOT_PASSWD
+              valueFrom:
+                secretKeyRef:
+                  name: seafile-db
+                  key: mariadb-root-password
+            - name: SEAFILE_ADMIN_EMAIL
+              valueFrom:
+                secretKeyRef:
+                  name: seafile-server-secret-env
+                  key: SEAFILE_ADMIN_EMAIL
+            - name: SEAFILE_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: seafile-server-secret-env
+                  key: SEAFILE_ADMIN_PASSWORD
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          livenessProbe:
+            tcpSocket:
+              port: 80
+            initialDelaySeconds: 0
+            failureThreshold: 3
+            timeoutSeconds: 1
+            periodSeconds: 10
+          readinessProbe:
+            tcpSocket:
+              port: 80
+            initialDelaySeconds: 0
+            failureThreshold: 3
+            timeoutSeconds: 1
+            periodSeconds: 10
+          startupProbe:
+            tcpSocket:
+              port: 80
+            initialDelaySeconds: 0
+            failureThreshold: 30
+            timeoutSeconds: 1
+            periodSeconds: 5
+          resources: {}
+          volumeMounts:
+            - name: data
+              mountPath: /shared
+            - name: nginx-conf
+              mountPath: /shared/nginx/conf/seafile.nginx.conf
+              subPath: seafile.nginx.conf
+      volumes:
+        - name: nginx-conf
+          configMap:
+            name: seafile-nginx-conf
+        - name: data
+          persistentVolumeClaim:
+            claimName: pvc-iscsi-seafile-data
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: seafile-document-server
+  namespace: tools
+  labels:
+    app: seafile
+    component: document-server
+    instance: prd
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: seafile
+      component: document-server
+      instance: prd
+  template:
+    metadata:
+      labels:
+        app: seafile
+        component: document-server
+        instance: prd
+    spec:
+      serviceAccountName: default
+      containers:
+        - name: seafile-document-server
+          image: "harbor.k8s.lan/dockerhub-proxy/onlyoffice/documentserver:latest"
+          env:
+            - name: TZ
+              value: Europe/Amsterdam
+            - name: JWT_ENABLED
+              value: "true"
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: seafile-server-secret-env
+                  key: JWT_SECRET
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 180
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 180
+          resources: {}
+          volumeMounts:
+            - name: seafile-documentserver
+              mountPath: /etc/onlyoffice/documentserver/local-production-linux.json
+              subPath: local-production-linux.json
+      volumes:
+        - name: seafile-documentserver
+          configMap:
+            name: seafile-documentserver-local-production-linux
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: seafile-db
+  namespace: tools
+  labels:
+    app: seafile
+    component: db
+    instance: prd
+spec:
+  selector:
+    app: seafile
+    component: db
+    instance: prd
+  type: ClusterIP
+  sessionAffinity: None
+  ports:
+    - name: mysql
+      protocol: TCP
+      port: 3306
+      targetPort: 3306
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: seafile-memcached
+  namespace: tools
+  labels:
+    app: seafile
+    component: memcached
+    instance: prd
+spec:
+  selector:
+    app: seafile
+    component: memcached
+    instance: prd
+  type: ClusterIP
+  ports:
+    - name: memcache
+      port: 11211
+      targetPort: 11211
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: seafile
+  namespace: tools
+  labels:
+    app: seafile
+    component: server
+    instance: prd
+spec:
+  selector:
+    app: seafile
+    component: server
+    instance: prd
+  type: ClusterIP
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: seafile-document-server
+  namespace: tools
+  labels:
+    app: seafile
+    component: document-server
+    instance: prd
+spec:
+  selector:
+    app: seafile
+    component: document-server
+    instance: prd
+  type: ClusterIP
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
+
+---
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: seafile-private
+  namespace: tools
+  labels:
+    app: seafile
+    component: server
+    instance: prd
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "10240m"
+spec:
+  ingressClassName: nginx-private
+  rules:
+    - host: files.k8s.lan
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: seafile
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - files.k8s.lan
+      secretName: tls-wildcard-k8s-lan
+
+---
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: seafile-public
+  namespace: tools
+  labels:
+    app: seafile
+    component: server
+    instance: prd
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  ingressClassName: nginx-public
+  rules:
+    - host: cloud.theautomation.nl
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: seafile
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - cloud.theautomation.nl
+      secretName: tls-wildcard-theautomation-nl
