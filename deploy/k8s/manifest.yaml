@@ -209,7 +209,7 @@ metadata:
     instance: prd
 data:
   DB_HOST: "seafile-db"
-  SEAFILE_SERVER_HOSTNAME: "https://cloud.theautomation.nl"
+  SEAFILE_SERVER_HOSTNAME: "cloud.theautomation.nl"
   SEAFILE_SERVER_LETSENCRYPT: "false"
   TIME_ZONE: "Europe/Amsterdam"
   NON_ROOT: "true"
