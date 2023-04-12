@@ -543,7 +543,7 @@ spec:
       enableServiceLinks: true
       containers:
         - name: seafile-server
-          image: "harbor.k8s.lan/k8s/seafile:6"
+          image: "harbor.k8s.lan/k8s/seafile:7"
           envFrom:
             - configMapRef:
                 name: seafile-server-env
