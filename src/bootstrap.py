@@ -197,8 +197,10 @@ COMPRESS_CACHE_BACKEND = 'locmem'""")
         fp.write("""# Enable Only Office
 ENABLE_ONLYOFFICE = True
 VERIFY_ONLYOFFICE_CERTIFICATE = False""")
+        fp.write('\n')
         fp.write(
             'ONLYOFFICE_APIJS_URL = "{proto}://{domain}/onlyofficeds/web-apps/apps/api/documents/api.js"'.format(proto=proto, domain=domain))
+        fp.write('\n')
         fp.write("""ONLYOFFICE_FILE_EXTENSION = ('doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'odt', 'fodt', 'odp', 'fodp', 'ods', 'fods')
 ONLYOFFICE_EDIT_FILE_EXTENSION = ('docx', 'pptx', 'xlsx')""")
         fp.write('\n')
