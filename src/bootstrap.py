@@ -125,7 +125,6 @@ def get_proto():
 def parse_args():
     ap = argparse.ArgumentParser()
     ap.add_argument('--parse-ports', action='store_true')
-
     return ap.parse_args()
 
 
@@ -197,14 +196,16 @@ COMPRESS_CACHE_BACKEND = 'locmem'""")
         fp.write('\n')
         fp.write("""# Enable Only Office
 ENABLE_ONLYOFFICE = True
-VERIFY_ONLYOFFICE_CERTIFICATE = False
-ONLYOFFICE_APIJS_URL = 'https://cloud.theautomation.nl/onlyofficeds/web-apps/apps/api/documents/api.js'
-ONLYOFFICE_FILE_EXTENSION = ('doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'odt', 'fodt', 'odp', 'fodp', 'ods', 'fods')
-ONLYOFFICE_EDIT_FILE_EXTENSION = ('doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'odt', 'fodt', 'odp', 'fodp', 'ods', 'fods')""")
+VERIFY_ONLYOFFICE_CERTIFICATE = False""")
+        fp.write(
+            'ONLYOFFICE_APIJS_URL = "{proto}://{domain}/onlyofficeds/web-apps/apps/api/documents/api.js"'.format(proto=proto, domain=domain))
+        fp.write("""ONLYOFFICE_FILE_EXTENSION = ('doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'odt', 'fodt', 'odp', 'fodp', 'ods', 'fods')
+ONLYOFFICE_EDIT_FILE_EXTENSION = ('docx', 'pptx', 'xlsx')""")
         fp.write('\n')
         fp.write("ONLYOFFICE_JWT_SECRET = '{jwt_secret}'".format(
             jwt_secret=os.getenv('JWT_SECRET')))
         fp.write('\n')
+
     # Disabled the Elasticsearch process on Seafile-container
     # Connection to the Elasticsearch-container
     if os.path.exists(join(topdir, 'conf', 'seafevents.conf')):
