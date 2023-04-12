@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#coding: UTF-8
+# coding: UTF-8
 
 """
 Bootstraping seafile server, letsencrypt (verification & cron job).
@@ -36,6 +36,7 @@ def gen_custom_dir():
         call('rm -rf %s' % custom_dir)
         call('ln -sf %s %s' % (dst_custom_dir, custom_dir))
 
+
 def init_letsencrypt():
     loginfo('Preparing for letsencrypt ...')
     wait_for_nginx()
@@ -63,7 +64,8 @@ def init_letsencrypt():
             with open('/var/spool/cron/crontabs/root', 'r') as f:
                 crons = f.read()
             if '/scripts/ssl.sh' not in crons:
-                call('echo "0 1 * * * /scripts/ssl.sh {0} {1} >> /opt/ssl/letsencrypt.log 2>&1" >> /var/spool/cron/crontabs/root'.format(ssl_dir, domain))
+                call(
+                    'echo "0 1 * * * /scripts/ssl.sh {0} {1} >> /opt/ssl/letsencrypt.log 2>&1" >> /var/spool/cron/crontabs/root'.format(ssl_dir, domain))
                 call('/usr/bin/crontab /var/spool/cron/crontabs/root')
             return
 
@@ -86,7 +88,8 @@ def init_letsencrypt():
     #     time.sleep(1000)
     #     sys.exit(1)
 
-    call('echo "0 1 * * * /scripts/ssl.sh {0} {1} >> /opt/ssl/letsencrypt.log 2>&1" >> /var/spool/cron/crontabs/root'.format(ssl_dir, domain))
+    call(
+        'echo "0 1 * * * /scripts/ssl.sh {0} {1} >> /opt/ssl/letsencrypt.log 2>&1" >> /var/spool/cron/crontabs/root'.format(ssl_dir, domain))
     call('/usr/bin/crontab /var/spool/cron/crontabs/root')
     # Create a crontab to auto renew the cert for letsencrypt.
 
@@ -109,12 +112,15 @@ def generate_local_nginx_conf():
         nginx_shared_file = '/shared/nginx/conf/seafile.nginx.conf'
         call('mv {0} {1} && ln -sf {1} {0}'.format(nginx_etc_file, nginx_shared_file))
 
+
 def is_https():
     return get_conf('SEAFILE_SERVER_LETSENCRYPT', 'false').lower() == 'true'
+
 
 def get_proto():
     proto = 'https'
     return proto
+
 
 def parse_args():
     ap = argparse.ArgumentParser()
@@ -122,17 +128,21 @@ def parse_args():
 
     return ap.parse_args()
 
+
 def init_seafile_server():
     version_stamp_file = get_version_stamp_file()
     if exists(join(shared_seafiledir, 'seafile-data')):
         if not exists(version_stamp_file):
             update_version_stamp(os.environ['SEAFILE_VERSION'])
         # sysbol link unlink after docker finish.
-        latest_version_dir='/opt/seafile/seafile-server-latest'
-        current_version_dir='/opt/seafile/' + get_conf('SEAFILE_SERVER', 'seafile-server') + '-' +  read_version_stamp()
+        latest_version_dir = '/opt/seafile/seafile-server-latest'
+        current_version_dir = '/opt/seafile/' + \
+            get_conf('SEAFILE_SERVER', 'seafile-server') + \
+            '-' + read_version_stamp()
         if not exists(latest_version_dir):
             call('ln -sf ' + current_version_dir + ' ' + latest_version_dir)
-        loginfo('Skip running setup-seafile-mysql.py because there is existing seafile-data folder.')
+        loginfo(
+            'Skip running setup-seafile-mysql.py because there is existing seafile-data folder.')
         return
 
     loginfo('Now running setup-seafile-mysql.py in auto mode.')
@@ -142,7 +152,7 @@ def init_seafile_server():
         'MYSQL_USER': 'seafile',
         'MYSQL_USER_PASSWD': str(uuid.uuid4()),
         'MYSQL_USER_HOST': '%.%.%.%',
-        'MYSQL_HOST': get_conf('DB_HOST','127.0.0.1'),
+        'MYSQL_HOST': get_conf('DB_HOST', '127.0.0.1'),
         # Default MariaDB root user has empty password and can only connect from localhost.
         'MYSQL_ROOT_PASSWD': get_conf('DB_ROOT_PASSWD', ''),
     }
@@ -153,10 +163,10 @@ def init_seafile_server():
 
     # Change the script to disable check MYSQL_USER_HOST
     call('''sed -i -e '/def validate_mysql_user_host(self, host)/a \ \ \ \ \ \ \ \ return host' {}'''
-        .format(get_script('setup-seafile-mysql.py')))
+         .format(get_script('setup-seafile-mysql.py')))
 
     call('''sed -i -e '/def validate_mysql_host(self, host)/a \ \ \ \ \ \ \ \ return host' {}'''
-        .format(get_script('setup-seafile-mysql.py')))
+         .format(get_script('setup-seafile-mysql.py')))
 
     setup_script = get_script('setup-seafile-mysql.sh')
     call('{} auto -n seafile'.format(setup_script), env=env)
@@ -176,9 +186,11 @@ def init_seafile_server():
 }
 COMPRESS_CACHE_BACKEND = 'locmem'""")
         fp.write('\n')
-        fp.write("TIME_ZONE = '{time_zone}'".format(time_zone=os.getenv('TIME_ZONE',default='Etc/UTC')))
+        fp.write("TIME_ZONE = '{time_zone}'".format(
+            time_zone=os.getenv('TIME_ZONE', default='Etc/UTC')))
         fp.write('\n')
-        fp.write('FILE_SERVER_ROOT = "{proto}://{domain}/seafhttp"'.format(proto=proto, domain=domain))
+        fp.write(
+            'FILE_SERVER_ROOT = "{proto}://{domain}/seafhttp"'.format(proto=proto, domain=domain))
         fp.write('\n')
 
     # set up only office
@@ -190,17 +202,20 @@ ONLYOFFICE_APIJS_URL = 'https://cloud.theautomation.nl/onlyofficeds/web-apps/app
 ONLYOFFICE_FILE_EXTENSION = ('doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'odt', 'fodt', 'odp', 'fodp', 'ods', 'fods')
 ONLYOFFICE_EDIT_FILE_EXTENSION = ('doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'odt', 'fodt', 'odp', 'fodp', 'ods', 'fods')""")
         fp.write('\n')
-
+        fp.write("ONLYOFFICE_JWT_SECRET = '{jwt_secret}'".format(
+            jwt_secret=os.getenv('JWT_SECRET')))
+        fp.write('\n')
     # Disabled the Elasticsearch process on Seafile-container
     # Connection to the Elasticsearch-container
     if os.path.exists(join(topdir, 'conf', 'seafevents.conf')):
         with open(join(topdir, 'conf', 'seafevents.conf'), 'r') as fp:
             fp_lines = fp.readlines()
             if '[INDEX FILES]\n' in fp_lines:
-               insert_index = fp_lines.index('[INDEX FILES]\n') + 1
-               insert_lines = ['es_port = 9200\n', 'es_host = elasticsearch\n', 'external_es_server = true\n']
-               for line in insert_lines:
-                   fp_lines.insert(insert_index, line)
+                insert_index = fp_lines.index('[INDEX FILES]\n') + 1
+                insert_lines = [
+                    'es_port = 9200\n', 'es_host = elasticsearch\n', 'external_es_server = true\n']
+                for line in insert_lines:
+                    fp_lines.insert(insert_index, line)
         with open(join(topdir, 'conf', 'seafevents.conf'), 'w') as fp:
             fp.writelines(fp_lines)
 
@@ -209,9 +224,9 @@ ONLYOFFICE_EDIT_FILE_EXTENSION = ('doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', '
         with open(join(topdir, 'conf', 'seafdav.conf'), 'r') as fp:
             fp_lines = fp.readlines()
             if 'share_name = /\n' in fp_lines:
-               replace_index = fp_lines.index('share_name = /\n')
-               replace_line = 'share_name = /seafdav\n'
-               fp_lines[replace_index] = replace_line
+                replace_index = fp_lines.index('share_name = /\n')
+                replace_line = 'share_name = /seafdav\n'
+                fp_lines[replace_index] = replace_line
 
         with open(join(topdir, 'conf', 'seafdav.conf'), 'w') as fp:
             fp.writelines(fp_lines)
@@ -220,7 +235,8 @@ ONLYOFFICE_EDIT_FILE_EXTENSION = ('doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', '
     # container, we need to move them to the shared volume
     #
     # e.g move "/opt/seafile/seafile-data" to "/shared/seafile/seafile-data"
-    files_to_copy = ['conf', 'ccnet', 'seafile-data', 'seahub-data', 'pro-data']
+    files_to_copy = ['conf', 'ccnet',
+                     'seafile-data', 'seahub-data', 'pro-data']
     for fn in files_to_copy:
         src = join(topdir, fn)
         dst = join(shared_seafiledir, fn)
