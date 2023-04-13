@@ -103,9 +103,11 @@ metadata:
   namespace: tools
 spec:
   encryptedData:
-    JWT_SECRET: AgDYbwCwb1QfqIyzqFzjotoWSebBaLaAU/W77XAuBcqcLZNXwaqDvQMSCZZb11xQm0Tjhp+SppLjpsKIuLLIb0EYfHjtlBIIqyDcLGiTseAgmttyvjYWxZeKbBdHk3oJNWh2IyBlNgQI82bXVE+5/2yIo2mBPWV3X32qiWcw6KUuGCl1SX1LausQ3jVm1AdTdzHJxYv4tya/ArOSGIC91Nm3wfWz/5swskxzBAsW1/70UfwjysgE7qIAOCzc5l1Q+RSr0g1jER1NV9aiR1uVKbKVxY2qlyb5g5Rsu8YKNzpPlhpFOYYHg0YvyEsJ2KPvcKaSC0elnAeKcGIoy28ozPi4RkfdwVDVonPp2fKmIuNsVBnuDEpjORlpDMMf9yc6vsgs45/1tX5KZ5t8USBah1BXnkyFU0oANh3gyizNJs1omO/P4j66/FqaZ64q4wN0XC7nGTOBdyi5e/9ofFiP+kG0+TQMZjbhZnigfONDFVE0Us3+DzU/GH9x3cqHBuE39H3Z53Vmz2odci+jpPFR5IJWqxWo6XPkEj4s71Ii7arxRIKIoL9YT82QONkOzCOjP/X14hZJG/J/w8/i7sxm5Va6sQdDaFRAwM8yf1tA2cJ2QGDe/oJFqzXY492O7PJTelKYdaE5JB8mBu9sUxki+mME4q/J0gdEsry4shOLSZcRZwIGgyCz+jv+nPylFyxAr3rq6TVmUB/TMovJY6z2/i0BJkj2F5q1YznjEy0kSmI/Ti5KqUw=
-    SEAFILE_ADMIN_EMAIL: AgDtjZEHAZ4TjL85vcBQ8ejug7hLec2SIafDiuvCPbJYtOJ2yRGG9Y3SFAkdha4NROnrNnXHOEAr9pEsOmt/60XdpdWMqfWpAeHf9PM+8PsONei+jkQck9YfPxGUocMIX/S+5qCR5w/nWW15xMFwDN+ntKeg7iJs9lPtu/lYR9jo0p6IvjfwiOKzI63Rd5q6Rle7VzK2wlXTcfVDiXhc/v672q63M3w/j3hxhEyH3X8UmWNM6AJgx5XRm/TcTg6y9xK2+v0lPS1ashV73u3bcCsj6iySwuxijckF1UGCfDLESX7cUGMuUm8SJSImFR1qMQH5BBcpTN5eIhlxvtDnAhvs0BcrSvpFQTcaQh2aOUYw1S/Gz8pEtRlnyMyoNqFgYphH5nVGnlRCyr7J8oDLLAl5wLfY2uNncVAKrFR94xsvIc+Y2xwa7Sjok8fHBm2wxV2jqFc4DFz01SF5d3JNVUJrg/n14RwwXQJmmy7KkBobiaElPpSzluFVuhes3XuXbqKDslq0x52FJxSKbSOVQRSCfGSj1ZUXPko9gwPcmNe7Qjykt1WGlsAYamK7lCicgUhiv6cYItVBwEXOIA1brcnvLZ+ULlGx0PBJG+49GMiBPijh8huB7z973F81nfBdKjROfxe+592FadfQcrAQR+tc2x4A1/rz7e5PXAws2akdzBT8kknm9KoItyLWjWx+lZt9eIxv7OjJiv6OMKgSlWafkg==
-    SEAFILE_ADMIN_PASSWORD: AgA5yMEDi41+vZP9RP3l/j6EKoGY6uMRpnqBVFqmqf5Hin8Z9Qk9jLhbUGP/MRXmX91I4VsOXnkzsVDIGG0KrY/yLyQq01cH+5qtTIgAuUkfRY/0aynmXfwJ8WtX/XWmgWZEqtPVs66XrEjoOdsmlV5i/t5w7ksn6EVtsL8N3qOyyJKExt2oFz1fSTsb2uwy2GS+0hKcw0+a8mfIn+YgZ9xFBaWDFG1AV0VPzT7KB013q5w4DrzU2OwklJvcbJJm7L6Wcq5wmHfItWg6wEmY78zw2Fda+RgDJcQYGL6NZC0o6JtW3FzLrg4cnjd/EN16b2aUopMizejtxWSWFZpe8VCFDQhmKGkVJpuCq8zpaMT3xYGFKQ8Mw5KA+JB53m9eSIE+Hs+2KM+nLcC+KiFkS2634+pSENe6u2wzUJjKh5WWWJwyvXQVaiDBO6GHsHinceXZ6aQwBItKojw7khB7EHso4jZkmaEdk/xfacX3TsSuiE7DfW9HOA0wVYy4eTYyC9sBh0/7fnZa869Fzl/m7TwSouq4uZ/hMK7VteA/9kuaYhbOeK7xNGtLUDWzGT3a4A8bgogv4axvtSLDpqHF/VTsSHzzNbQr57XE/gImi+EZ7SX2YM4Rx0gSa0UE8crqEiwQeflgmhJZik2dIX2PzVqK5g/Q3UW2chMNAeyvsvqYmJ+5umzzXQzF7/LpFt6EjLzmnOlp9MGm0yYV8fHEv9bf3jjNm3bLt8iUhCxnTQ3845QM+zse
+    EMAIL_HOST_PASSWORD: AgAlImX0yQ4jV0RHBvG+phqrcBtu2nJXY3Vn1vfdWX1P8Cg/x77fOQ5pPwdpi6pL2KE6DbRdCJi5OFB9qdiHv900xXUKaylLdASvlhipAq7Ifs7pxnbFpNr0OMHr5B/IvvOj/2AmutCeVekAlNZgrxeahSoIhhy6eBSnD0u25eQ5DHS8uRQbKAG445fFKpNShwH1O2BWuAYFaXpMSr/vKTCLacuISW8A9yyga8UH1ulH0YRqdC04w1+EAOSROPPT2L/lyIM3rzG23qk67wNSPjj5qvUyGwr5hmHWdT8GqXm6Pb8iHVeeaeDY7A+HKRTW3BYc0fLebtT2tVumujj457cLxBUSwVFvyNt8gFCvA8mCJBhUGmG9Gkeu1NAMnbLa6svTRU6T9OWY8qHFHu86XMu2iAwe8gZ0Vp/Y+tXeRORnaQJKaJuAG9XjaI5ew0aqz1uAPIYxcrhK6djHg5aetKpAD58PJLYUFKxuXfJEZ7WXQfF+YKWdnclfi9VywFYWw+CG1djhFgJN04Pu6tAC72SHrHtmSYMaAz/6gPgP3DShaeaemCuGXN4sCF8e4mT/3fcJ84bAR44dSshI8QCjtxQZGLd2ixZ7JkRiXFnC/Mhy34xVpu1BZzzlN1+96URp7hbZjpBkuY8GjvgAmFCNsGNKw3pq2He1WmRcLv6dret2NJR5wJ+vaiWiwOru7bUqqOM1W4gscTGaNNrKcFZ+3n4U9sWi0B+5
+    EMAIL_HOST_USER: AgC7Q6Xzs/IBX1YL9kxvpOZc74IOlJ6wyVPxYUOaSTZRWzHnyivs66kYZgn/Lof36Hm6r6WQu8kot/Zy6mCWnNw84VKvi6Wz261kndsMFV/7PQV3Wq1Brtysk6pLkl8/dKlKBZ8Gv7TIM+eHzhSsCPcsZBBH/NVWileS8etAyANDB6YOQgPbKoKdjALIxSK1Xy0fMsUddXdiYGve5z+TU8LjC4/yHSeylZbqtM7AE6C4o+1tsBCqQGXDncZFBW65fgT0mZvDMwPMyUCNJTu6e7VN0N8ETb/vum/nLHL13VOxR8KOZQS8e5rIwSNSl12ys74LjfrSEVwYnwFRA6HHGNGzdS6NWy2TzFqxn7RYLDzoewl674/odyis2pSIeesWUGEzYFZcY9OYlHcm3rOK3+nOZpDsqXBV3MBPcAQshuWco/SmIcgRBx2zIxQ8G0+fseP7oLQ6WajE56Y3MAFY45lV7lCirSyqWFFmfbEyHPL6zl81/C8tcjEC7+Cyb8EzpEEZO/fCoAnV+tdHPkGLz8e+f1TufwwE1pp/qhe7DdOLDa03SWkJRvN0uKAQeGHIQtD2tbyzScOoZwF4nZ3EoRTjFf0fpFc+kYq11hl0eeCb6wo3LLAtYKJ4v1jFtYWfIv/DIeWbboJJ+AVlIRf4M7g2NwPpM9+2y1skfNqBeuxUL0yPgNigYb4v5+JTem47V8HVq+lShAftI90zA50=
+    JWT_SECRET: AgAxE8qgClbHAFi1CAnee2o8wbmZLHKnn7jHA6tb4FK1ifAGOGRGqnksAkhfGMvLaQwTeqYWQfbbDrABLq1aFL72abp6LXqQZWdcDGCOLkacR5RBdM3PD35zDDv/ANjQtiIQHp9yABxzgrNqzUlRgbsSCXmE2t2YcJ8A3gflknKZzIsFpjNsHUTha9uAm2zpcTdvGQfQxcyJTatrFL19EEH9r0yg3BGKgcYqqNAD+aEdCMf/z4j0fBMmtcSGXXkftbO4+ZJwXAsZcQMOGJ5pmMUf0H2YLHgnmPgvPPTBdDl93o3ThumMtVRrXuT/dlFfPgTOzFOlnUl6rKvqB+Q9T1JamP05tkPKjjy/iasKpBz4JfJ43L00uRtYhZ7xEOZZjCrqlmq3TT9UYxfVuZGzvxidLIpwDgfCzDSXbCu/zosetxjfBavKKv937z+yFBHaUfXohNAc9Jn7egae6HDBCIt7YbwzbYOrCx3jKd8hq8yeu36+x4qPOMTOhrfDrnFcuFMOqapYjAX0n+pdJEp5pkZ6yvle20AZC6KYQdEz5mkQfg3NDwLuSc9W2U5XzPjCg7PTD+6pE23UkjEunf7qhoAcwgUEV4qyM7Zz3pJltEZFhnoPOpPazQsGJMqI5gy63w0kroJVtfyoVoWT4tVDwk3hEOlcEAmj8Bt6kAaiUUUl1LCTFpOSv0CgtI9qm5qG4NVlUvXVqk12Aqv/m3oALkMPrAgLK9T/qG2Kc7FMTW1t/6HCNlE=
+    SEAFILE_ADMIN_EMAIL: AgA/9YllA02hcFyYBDZQyTGjLjeY+pinOt+HoogANEpG2GCilmM9UsdyrcqgdrsKlffd4bbagx0M1SKc0hvhI8LBHX6+Mg8mmqA6PblKuoTOe/vtZUj/KfLShGzEusMo4lnNzmht1zLh0WwvBpxPKvezyUdD9LRxlqk4voFDy38E2evM5APaR0o1hEkLAMS68KBTEMrAO2vAFNTxDjze5Ty770bwGxP5XU5zfG6+uaCXbtjkmLVNhHxF6TjGxac4MbhPiDlTiZX47k9vo/h0lM5deH9osCX/Fl6DHaR3x3LQZzDbx+EqmBJASxe7B7UiZxGPshUigYHbx7TDMx7AzBOBWU8Yjvos6Dm9u90a8OF1zuA1ccgiBnx2UeSnomoVs0Wd4AwMMewKfZhsnpnIUPXGZHyHfOI4Jq8Jcvh04Izo8mdEZIw4Dd1qfiPaPOhrNcyeCozvaB36ySOFWaVWZzqST/oTZhLXytLOf0980bsyBKEC+BVtsbpTKafNMLB6PCh6BQcn4cPo5jur5YOXeTJBw5or/FKGfnKD8h5nzFwPDkOFcEfIOBpc5LbDtDLfB/mWDmFLTvqaXERn+qOU6E07IESeCn8Q/YKf1wLPszRaTulAxOoCBSlh8fiEpfUC9KxLGarhLDBrRxE2d18V2ml52VLItBgKdS+Ngj831E6rt1Hx4Ayjkc96Kn38whCBzfbh1WsLcpA29ZFqW10fNnn1Og==
+    SEAFILE_ADMIN_PASSWORD: AgDn/39jBgcfSmZb1eZz+hdYptvdFq0iZaHghgoG8hNYR7n54DhaVpW89jZWrxYfkmNUooDgYgGhXj7K9q74ZvpgCGgGwk4qtoyZxFZ3RVvWdnBPawRlB5KJYb+/stFi5NeoJJ4BJI9CpAAGmrg1C3CpTjfgp4Q/cCUfqV1syYVNSLDYDiJtEp1K/fKkRRFHOlaTcdLGKujDu5kADkDD3rfsOc9HhPGddt5eQGxlhZ+49X5leaRm6ApfbC8Zw/5KuEo59VtUe2ddTETMlif1/fty3NySbdKzDosgXRYC6KjmQWQRzc8deEwrAknMtF4naphwUGShPJKxR7MzF/NTOwDnc949MJ4iHN7YjC7DvvXALhV1YVqQtOSd/3D66WJidt9pCsaI5h0VcY6+uuo3NT3UVIjsyBZlyNEASMcKAuYupFiu5Hom3g58dKWZFTyYWCRbpcorgf6jScSd64vgW+6z1UomTjMKAcWhUwZKaXzDv1qqi3XJxNsPJfhXt6U1WWKXHDWNCnbAgdZMGKZwWoju4BBrk3J4PxFkvP9TFg7eBJ/i2qopvMeI2h79uO9U6n5pMHCcyAnxauukvdQIg12Jfo7IkADg6PYyr/AiVNyYXSIy47ZeKZrpTJ43SBMvT2HeDuJfP7renkQ1BURJJCTC5IBeRb/E76motATnQ9MT+zw/2T6l4G8QNb1+BGDQnYefdbzOnCTMuDVO3RMzpGrRqf7jbEuEKDuno9nA8QjiVMM1pH+9
   template:
     metadata:
       labels:
@@ -201,24 +203,6 @@ data:
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: seafile-server-env
-  namespace: tools
-  labels:
-    app: seafile
-    component: server
-    instance: prd
-data:
-  DB_HOST: "seafile-db"
-  SEAFILE_SERVER_HOSTNAME: "cloud.theautomation.nl"
-  SEAFILE_SERVER_LETSENCRYPT: "false"
-  TIME_ZONE: "Europe/Amsterdam"
-  NON_ROOT: "true"
-  FILE_SERVER_ROOT: "https://cloud.theautomation.nl/seafhttp"
-
----
-kind: ConfigMap
-apiVersion: v1
-metadata:
   name: seafile-nginx-conf
   namespace: tools
   labels:
@@ -226,24 +210,62 @@ metadata:
     component: server
     instance: prd
 data:
-  seafile.nginx.conf: |-
+  seafile.nginx.conf.template: |-
     # -*- mode: nginx -*-
-    map $http_x_forwarded_proto $the_scheme {
-        default $http_x_forwarded_proto;
-        "" $scheme;
+    # Auto generated at {{ current_timestr }}
+
+        # Required for OnlyOffice DocumentServer
+        map $http_x_forwarded_proto $the_scheme {
+            default $http_x_forwarded_proto;
+            "" $scheme;
+        }
+
+        map $http_x_forwarded_host $the_host {
+            default $http_x_forwarded_host;
+            "" $host;
+        }
+
+        map $http_upgrade $proxy_connection {
+            default upgrade;
+            "" close;
+        }
+
+    {% if https -%}
+    server {
+        listen 80;
+        server_name _ default_server;
+
+        # allow certbot to connect to challenge location via HTTP Port 80
+        # otherwise renewal request will fail
+        location /.well-known/acme-challenge/ {
+            alias /var/www/challenges/;
+            try_files $uri =404;
+        }
+
+        location / {
+            rewrite ^ https://{{ domain }}$request_uri? permanent;
+        }
     }
-    map $http_x_forwarded_host $the_host {
-        default $http_x_forwarded_host;
-        "" $host;
-    }
-    map $http_upgrade $proxy_connection {
-        default upgrade;
-        "" close;
-    }
+    {% endif -%}
 
     server {
-    listen 80;
-    server_name cloud.theautomation.nl;
+    {% if https -%}
+        listen 443 ssl;
+        ssl_certificate      /shared/ssl/{{ domain }}.crt;
+        ssl_certificate_key  /shared/ssl/{{ domain }}.key;
+
+        ssl_ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS;
+
+        # TODO: More SSL security hardening: ssl_session_tickets & ssl_dhparam
+        # ssl_session_tickets on;
+        # ssl_session_ticket_key /etc/nginx/sessionticket.key;
+        # ssl_session_cache shared:SSL:10m;
+        # ssl_session_timeout 10m;
+    {% else -%}
+        listen 80;
+    {% endif -%}
+
+        server_name {{ domain }};
 
         client_max_body_size 10m;
 
@@ -257,7 +279,6 @@ data:
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header Connection "";
             proxy_http_version 1.1;
-
 
             client_max_body_size 0;
             access_log      /var/log/nginx/seahub.access.log seafileformat;
@@ -303,9 +324,21 @@ data:
 
             access_log      /var/log/nginx/seafdav.access.log seafileformat;
             error_log       /var/log/nginx/seafdav.error.log;
-    }
+        }
 
-        # Proxy pass is kubernetes service name
+        location /media {
+            root /opt/seafile/seafile-server-latest/seahub;
+        }
+
+    {% if https -%}
+        # For letsencrypt
+        location /.well-known/acme-challenge/ {
+            alias /var/www/challenges/;
+            try_files $uri =404;
+        }
+    {% endif -%}
+
+        # Proxy pass is kubernetes onlyoffice service name
         location /onlyofficeds/ {
             proxy_pass http://seafile-document-server:80/;
             proxy_http_version 1.1;
@@ -319,6 +352,303 @@ data:
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         }
     }
+
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: seafile-bootstrap
+  namespace: tools
+  labels:
+    app: seafile
+    component: server
+    instance: prd
+data:
+  bootstrap.py: |-
+    #!/usr/bin/env python3
+    # coding: UTF-8
+
+    """
+    Bootstraping seafile server, letsencrypt (verification & cron job).
+    """
+
+    import argparse
+    import os
+    from os.path import abspath, basename, exists, dirname, join, isdir
+    import shutil
+    import sys
+    import uuid
+    import time
+
+    from utils import (
+        call, get_conf, get_install_dir, loginfo,
+        get_script, render_template, get_seafile_version, eprint,
+        cert_has_valid_days, get_version_stamp_file, update_version_stamp,
+        wait_for_mysql, wait_for_nginx, read_version_stamp
+    )
+
+    seafile_version = get_seafile_version()
+    installdir = get_install_dir()
+    topdir = dirname(installdir)
+    shared_seafiledir = '/shared/seafile'
+    ssl_dir = '/shared/ssl'
+    generated_dir = '/bootstrap/generated'
+
+
+    def gen_custom_dir():
+        dst_custom_dir = '/shared/seafile/seahub-data/custom'
+        custom_dir = join(installdir, 'seahub/media/custom')
+        if not exists(dst_custom_dir):
+            os.mkdir(dst_custom_dir)
+            call('rm -rf %s' % custom_dir)
+            call('ln -sf %s %s' % (dst_custom_dir, custom_dir))
+
+
+    def init_letsencrypt():
+        loginfo('Preparing for letsencrypt ...')
+        wait_for_nginx()
+
+        if not exists(ssl_dir):
+            os.mkdir(ssl_dir)
+
+        domain = get_conf('SEAFILE_SERVER_HOSTNAME', 'seafile.example.com')
+        context = {
+            'ssl_dir': ssl_dir,
+            'domain': domain,
+        }
+        render_template(
+            '/templates/letsencrypt.cron.template',
+            join(generated_dir, 'letsencrypt.cron'),
+            context
+        )
+
+        ssl_crt = '/shared/ssl/{}.crt'.format(domain)
+        if exists(ssl_crt):
+            loginfo('Found existing cert file {}'.format(ssl_crt))
+            if cert_has_valid_days(ssl_crt, 30):
+                loginfo('Skip letsencrypt verification since we have a valid certificate')
+                # Create a crontab to auto renew the cert for letsencrypt.
+                with open('/var/spool/cron/crontabs/root', 'r') as f:
+                    crons = f.read()
+                if '/scripts/ssl.sh' not in crons:
+                    call(
+                        'echo "0 1 * * * /scripts/ssl.sh {0} {1} >> /opt/ssl/letsencrypt.log 2>&1" >> /var/spool/cron/crontabs/root'.format(ssl_dir, domain))
+                    call('/usr/bin/crontab /var/spool/cron/crontabs/root')
+                return
+
+        loginfo('Starting letsencrypt verification')
+        # Create a temporary nginx conf to start a server, which would accessed by letsencrypt
+        context = {
+            'https': False,
+            'domain': domain,
+        }
+        if not os.path.isfile('/shared/nginx/conf/seafile.nginx.conf'):
+            render_template('/templates/seafile.nginx.conf.template',
+                            '/etc/nginx/sites-enabled/seafile.nginx.conf', context)
+
+        call('nginx -s reload')
+        time.sleep(2)
+
+        call('/scripts/ssl.sh {0} {1}'.format(ssl_dir, domain))
+        # if call('/scripts/ssl.sh {0} {1}'.format(ssl_dir, domain), check_call=False) != 0:
+        #     eprint('Now waiting 1000s for postmortem')
+        #     time.sleep(1000)
+        #     sys.exit(1)
+
+        call(
+            'echo "0 1 * * * /scripts/ssl.sh {0} {1} >> /opt/ssl/letsencrypt.log 2>&1" >> /var/spool/cron/crontabs/root'.format(ssl_dir, domain))
+        call('/usr/bin/crontab /var/spool/cron/crontabs/root')
+        # Create a crontab to auto renew the cert for letsencrypt.
+
+
+    def generate_local_nginx_conf():
+        # Now create the final nginx configuratin
+        domain = get_conf('SEAFILE_SERVER_HOSTNAME', 'seafile.example.com')
+        context = {
+            'https': is_https(),
+            'domain': domain,
+        }
+
+        if not os.path.isfile('/shared/nginx/conf/seafile.nginx.conf'):
+            render_template(
+                '/templates/seafile.nginx.conf.template',
+                '/etc/nginx/sites-enabled/seafile.nginx.conf',
+                context
+            )
+            nginx_etc_file = '/etc/nginx/sites-enabled/seafile.nginx.conf'
+            nginx_shared_file = '/shared/nginx/conf/seafile.nginx.conf'
+            call('mv {0} {1} && ln -sf {1} {0}'.format(nginx_etc_file, nginx_shared_file))
+
+
+    def is_https():
+        return get_conf('SEAFILE_SERVER_LETSENCRYPT', 'false').lower() == 'true'
+
+    def get_proto():
+        proto = 'https' if is_https() else 'http'
+        force_https_in_conf = get_conf('FORCE_HTTPS_IN_CONF', 'false').lower() == 'true'
+        if force_https_in_conf:
+            proto = 'https'
+        return proto
+
+    def parse_args():
+        ap = argparse.ArgumentParser()
+        ap.add_argument('--parse-ports', action='store_true')
+
+        return ap.parse_args()
+
+
+    def init_seafile_server():
+        version_stamp_file = get_version_stamp_file()
+        if exists(join(shared_seafiledir, 'seafile-data')):
+            if not exists(version_stamp_file):
+                update_version_stamp(os.environ['SEAFILE_VERSION'])
+            # sysbol link unlink after docker finish.
+            latest_version_dir = '/opt/seafile/seafile-server-latest'
+            current_version_dir = '/opt/seafile/' + \
+                get_conf('SEAFILE_SERVER', 'seafile-server') + \
+                '-' + read_version_stamp()
+            if not exists(latest_version_dir):
+                call('ln -sf ' + current_version_dir + ' ' + latest_version_dir)
+            loginfo(
+                'Skip running setup-seafile-mysql.py because there is existing seafile-data folder.')
+            return
+
+        loginfo('Now running setup-seafile-mysql.py in auto mode.')
+        env = {
+            'SERVER_NAME': 'seafile',
+            'SERVER_IP': get_conf('SEAFILE_SERVER_HOSTNAME', 'seafile.example.com'),
+            'MYSQL_USER': 'seafile',
+            'MYSQL_USER_PASSWD': str(uuid.uuid4()),
+            'MYSQL_USER_HOST': '%.%.%.%',
+            'MYSQL_HOST': get_conf('DB_HOST', '127.0.0.1'),
+            # Default MariaDB root user has empty password and can only connect from localhost.
+            'MYSQL_ROOT_PASSWD': get_conf('DB_ROOT_PASSWD', ''),
+        }
+
+        # Change the script to allow mysql root password to be empty
+        # call('''sed -i -e 's/if not mysql_root_passwd/if not mysql_root_passwd and "MYSQL_ROOT_PASSWD" not in os.environ/g' {}'''
+        #     .format(get_script('setup-seafile-mysql.py')))
+
+        # Change the script to disable check MYSQL_USER_HOST
+        call('''sed -i -e '/def validate_mysql_user_host(self, host)/a \ \ \ \ \ \ \ \ return host' {}'''
+            .format(get_script('setup-seafile-mysql.py')))
+
+        call('''sed -i -e '/def validate_mysql_host(self, host)/a \ \ \ \ \ \ \ \ return host' {}'''
+            .format(get_script('setup-seafile-mysql.py')))
+
+        setup_script = get_script('setup-seafile-mysql.sh')
+        call('{} auto -n seafile'.format(setup_script), env=env)
+
+        domain = get_conf('SEAFILE_SERVER_HOSTNAME', 'seafile.example.com')
+        proto = get_proto()
+        with open(join(topdir, 'conf', 'seahub_settings.py'), 'a+') as fp:
+            fp.write('\n')
+            fp.write("""CACHES = {
+        'default': {
+            'BACKEND': 'django_pylibmc.memcached.PyLibMCCache',
+            'LOCATION': 'seafile-memcached:11211',
+        },
+        'locmem': {
+            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        },
+    }
+    COMPRESS_CACHE_BACKEND = 'locmem'""")
+            fp.write('\n')
+            fp.write("TIME_ZONE = '{time_zone}'".format(
+                time_zone=os.getenv('TIME_ZONE', default='Etc/UTC')))
+            fp.write('\n')
+            fp.write(
+                'FILE_SERVER_ROOT = "https://{domain}/seafhttp"'.format(domain=domain))
+            fp.write('\n')
+            fp.write('\n')
+        # Enable Only Office
+            fp.write("""ENABLE_ONLYOFFICE = True
+    VERIFY_ONLYOFFICE_CERTIFICATE = True""")
+            fp.write('\n')
+            fp.write(
+                'ONLYOFFICE_APIJS_URL = "https://{domain}/onlyofficeds/web-apps/apps/api/documents/api.js"'.format(domain=domain))
+            fp.write('\n')
+            fp.write("""ONLYOFFICE_FILE_EXTENSION = ('doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'odt', 'fodt', 'odp', 'fodp', 'ods', 'fods')
+    ONLYOFFICE_EDIT_FILE_EXTENSION = ('docx', 'pptx', 'xlsx')""")
+            fp.write('\n')
+            fp.write("ONLYOFFICE_JWT_SECRET = '{jwt_secret}'".format(
+                jwt_secret=os.getenv('JWT_SECRET')))
+            fp.write('\n')
+            fp.write("""ENABLE_TWO_FACTOR_AUTH = True
+    USER_STRONG_PASSWORD_REQUIRED = True
+    USER_PASSWORD_MIN_LENGTH = 10""")
+            fp.write('\n')
+            fp.write("EMAIL_HOST_USER = '{email_host_user}'".format(email_host_user=os.getenv('EMAIL_HOST_USER')))
+            fp.write('\n')
+            fp.write("EMAIL_HOST_PASSWORD = '{email_host_password}'".format(email_host_password=os.getenv('EMAIL_HOST_PASSWORD')))
+            fp.write('\n')
+            fp.write("""EMAIL_USE_TLS = False
+    EMAIL_HOST = 'protonmail-bridge-smtp.tools.svc.cluster.local'
+    EMAIL_PORT = '25'
+    DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+    SERVER_EMAIL = EMAIL_HOST_USER""")
+
+        # Disabled the Elasticsearch process on Seafile-container
+        # Connection to the Elasticsearch-container
+        if os.path.exists(join(topdir, 'conf', 'seafevents.conf')):
+            with open(join(topdir, 'conf', 'seafevents.conf'), 'r') as fp:
+                fp_lines = fp.readlines()
+                if '[INDEX FILES]\n' in fp_lines:
+                    insert_index = fp_lines.index('[INDEX FILES]\n') + 1
+                    insert_lines = [
+                        'es_port = 9200\n', 'es_host = elasticsearch\n', 'external_es_server = true\n']
+                    for line in insert_lines:
+                        fp_lines.insert(insert_index, line)
+            with open(join(topdir, 'conf', 'seafevents.conf'), 'w') as fp:
+                fp.writelines(fp_lines)
+
+        # Modify seafdav config
+        if os.path.exists(join(topdir, 'conf', 'seafdav.conf')):
+            with open(join(topdir, 'conf', 'seafdav.conf'), 'r') as fp:
+                fp_lines = fp.readlines()
+                if 'share_name = /\n' in fp_lines:
+                    replace_index = fp_lines.index('share_name = /\n')
+                    replace_line = 'share_name = /seafdav\n'
+                    fp_lines[replace_index] = replace_line
+
+            with open(join(topdir, 'conf', 'seafdav.conf'), 'w') as fp:
+                fp.writelines(fp_lines)
+
+        # After the setup script creates all the files inside the
+        # container, we need to move them to the shared volume
+        #
+        # e.g move "/opt/seafile/seafile-data" to "/shared/seafile/seafile-data"
+        files_to_copy = ['conf', 'ccnet',
+                        'seafile-data', 'seahub-data', 'pro-data']
+        for fn in files_to_copy:
+            src = join(topdir, fn)
+            dst = join(shared_seafiledir, fn)
+            if not exists(dst) and exists(src):
+                shutil.move(src, shared_seafiledir)
+                call('ln -sf ' + join(shared_seafiledir, fn) + ' ' + src)
+
+        gen_custom_dir()
+
+        loginfo('Updating version stamp')
+        update_version_stamp(os.environ['SEAFILE_VERSION'])
+
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: seafile-server-env
+  namespace: tools
+  labels:
+    app: seafile
+    component: server
+    instance: prd
+data:
+  DB_HOST: "seafile-db"
+  SEAFILE_SERVER_HOSTNAME: "cloud.theautomation.nl"
+  SEAFILE_SERVER_LETSENCRYPT: "false"
+  TIME_ZONE: "Europe/Amsterdam"
+  NON_ROOT: "true"
+  SERVICE_URL: "test"
 
 ---
 kind: StatefulSet
@@ -423,21 +753,23 @@ spec:
         - name: config
           configMap:
             name: seafile-db
-  volumeClaimTemplates:
-    - metadata:
-        name: data
-      spec:
-        selector:
-          matchLabels:
-            app: seafile
-            component: db
-            instance: prd
-        accessModes:
-          - "ReadWriteOnce"
-        storageClassName: freenas-iscsi-manual-csi
-        resources:
-          requests:
-            storage: "8Gi"
+        - name: data
+          emptyDir: {}
+  # volumeClaimTemplates:
+  #   - metadata:
+  #       name: data
+  #     spec:
+  #       selector:
+  #         matchLabels:
+  #           app: seafile
+  #           component: db
+  #           instance: prd
+  #       accessModes:
+  #         - "ReadWriteOnce"
+  #       storageClassName: freenas-iscsi-manual-csi
+  #       resources:
+  #         requests:
+  #           storage: "8Gi"
 
 ---
 kind: Deployment
@@ -543,7 +875,7 @@ spec:
       enableServiceLinks: true
       containers:
         - name: seafile-server
-          image: "harbor.k8s.lan/k8s/seafile:8"
+          image: "harbor.k8s.lan/dockerhub-proxy/seafileltd/seafile-mc:10.0.1"
           envFrom:
             - configMapRef:
                 name: seafile-server-env
@@ -569,6 +901,16 @@ spec:
                 secretKeyRef:
                   name: seafile-server-secret-env
                   key: JWT_SECRET
+            - name: EMAIL_HOST_USER
+              valueFrom:
+                secretKeyRef:
+                  name: seafile-server-secret-env
+                  key: EMAIL_HOST_USER
+            - name: EMAIL_HOST_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: seafile-server-secret-env
+                  key: EMAIL_HOST_PASSWORD
           ports:
             - containerPort: 80
               protocol: TCP
@@ -598,15 +940,22 @@ spec:
             - name: data
               mountPath: /shared
             - name: nginx-conf
-              mountPath: /shared/nginx/conf/seafile.nginx.conf
-              subPath: seafile.nginx.conf
+              mountPath: /templates/seafile.nginx.conf.template
+              subPath: seafile.nginx.conf.template
+            - name: bootstrap
+              mountPath: /scripts/bootstrap.py
+              subPath: bootstrap.py
       volumes:
         - name: nginx-conf
           configMap:
             name: seafile-nginx-conf
+        - name: bootstrap
+          configMap:
+            name: seafile-bootstrap
         - name: data
-          persistentVolumeClaim:
-            claimName: pvc-iscsi-seafile-data
+          emptyDir: {}
+          # persistentVolumeClaim:
+          #   claimName: pvc-iscsi-seafile-data
       imagePullSecrets:
         - name: harbor-registry-creds
 
@@ -657,12 +1006,12 @@ spec:
             httpGet:
               path: /
               port: 80
-            initialDelaySeconds: 180
+            initialDelaySeconds: 60
           readinessProbe:
             httpGet:
               path: /
               port: 80
-            initialDelaySeconds: 180
+            initialDelaySeconds: 60
           resources: {}
           volumeMounts:
             - name: seafile-documentserver
@@ -761,35 +1110,31 @@ spec:
       port: 80
       targetPort: 80
 
----
-kind: Ingress
-apiVersion: networking.k8s.io/v1
-metadata:
-  name: seafile-private
-  namespace: tools
-  labels:
-    app: seafile
-    component: server
-    instance: prd
-  annotations:
-    nginx.ingress.kubernetes.io/proxy-body-size: "10240m"
-spec:
-  ingressClassName: nginx-private
-  rules:
-    - host: files.k8s.lan
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: seafile
-                port:
-                  number: 80
-  tls:
-    - hosts:
-        - files.k8s.lan
-      secretName: tls-wildcard-k8s-lan
+# ---
+# kind: Ingress
+# apiVersion: networking.k8s.io/v1
+# metadata:
+#   name: seafile-private
+#   namespace: tools
+#   labels:
+#     app: seafile
+#     component: server
+#     instance: prd
+#   annotations:
+#     nginx.ingress.kubernetes.io/proxy-body-size: "0"
+# spec:
+#   ingressClassName: nginx-private
+#   rules:
+#     - host: cloud.k8s.lan
+#       http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: seafile
+#                 port:
+#                   number: 80
 
 ---
 kind: Ingress
@@ -803,8 +1148,6 @@ metadata:
     instance: prd
   annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: "0"
-    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
   ingressClassName: nginx-public
   rules:
